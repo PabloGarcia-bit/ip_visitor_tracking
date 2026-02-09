@@ -1,0 +1,53 @@
+<odoo>
+    <record id="view_ip_visitor_tree" model="ir.ui.view">
+        <field name="name">ip.visitor.tracking.tree</field>
+        <field name="model">ip.visitor.tracking</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="ip_address"/>
+                <field name="country"/>
+                <field name="visit_time"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_ip_visitor_form" model="ir.ui.view">
+        <field name="name">ip.visitor.tracking.form</field>
+        <field name="model">ip.visitor.tracking</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_get_geolocation" string="Obtener Geolocalización" type="object" class="oe_highlight"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group string="Configuración">
+                            <field name="api_key" password="1"/>
+                        </group>
+                        <group string="Datos de Localización">
+                            <field name="ip_address"/>
+                            <field name="country"/>
+                            <field name="city"/>
+                            <field name="visit_time"/>
+                        </group>
+                    </group>
+                    <group string="Detalles Técnicos">
+                        <field name="latitude"/>
+                        <field name="longitude"/>
+                        <field name="isp"/>
+                        <field name="organization"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_ip_visitor" model="ir.actions.act_window">
+        <field name="name">Rastreador de IPs</field>
+        <field name="res_model">ip.visitor.tracking</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_ip_tracking_root" name="IP Tracking" sequence="10"/>
+    <menuitem id="menu_ip_visitor_list" name="Visitantes" parent="menu_ip_tracking_root" action="action_ip_visitor"/>
+</odoo>
