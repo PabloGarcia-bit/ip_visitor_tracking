@@ -6,9 +6,9 @@
     'depends': ['base'],
     'data': [
         'security/ir.model.access.csv',
-        'views/ipgelocation_views.xml',
+        'views/ip_visitor_tracking_views.xml',
     ],
     'installable': True,
     'application': True,
-    'icon': '/ip_visitor_tracking/static/description/icon.png', # Agrega tu icono aquí
+    'icon': '/ip_visitor_tracking/static/description/icon.png',
 }
